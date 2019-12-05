@@ -143,6 +143,9 @@
                         <argLine>
                             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                         </argLine>
+                        <systemProperties>
+                            <allure.results.directory>target/allure-results</allure.results.directory>
+                        </systemProperties>
                     </configuration>
                     <dependencies>
                         <dependency>
@@ -151,6 +154,11 @@
                             <version>${aspectj.version}</version>
                         </dependency>
                     </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>io.qameta.allure</groupId>
+                    <artifactId>allure-maven</artifactId>
+                    <version>2.9</version>
                 </plugin>
             </plugins>
         </pluginManagement>
