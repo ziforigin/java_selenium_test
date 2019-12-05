@@ -23,10 +23,18 @@ public class HomePage extends AbstractPage{
     public WebElement shortenBtn;
 
     @FindBy(css = "#show-link-options")
-    public WebElement showLinkOptions;
+    public WebElement showLinkOptionsBtn;
 
     public void openPage(){
         driver.get(webUrl);
+    }
+
+    public void clickOnShortenBtn() {
+        shortenBtn.click();
+    }
+
+    public void clickOnSshowLinkOptionsBtn() {
+        showLinkOptionsBtn.click();
     }
 
 }

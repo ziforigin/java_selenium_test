@@ -15,13 +15,9 @@ public class AbstractPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-
+    
     public void checkOpened(String pageTitle){
         MatcherAssert.assertThat("Expected page was not opened", driver.getTitle(), equalTo(pageTitle));
     }
 
-    public void clickOnWebElement(WebElement button) {
-        button.click();
-    }
 }

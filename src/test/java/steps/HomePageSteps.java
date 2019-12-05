@@ -24,10 +24,10 @@ public class HomePageSteps {
     public void clickOnAbutton(String button) {
         switch(button){
             case "shorten":
-                homePage.clickOnWebElement(homePage.shortenBtn);
+                homePage.clickOnShortenBtn();
                 break;
             case "link options":
-                homePage.clickOnWebElement(homePage.showLinkOptions);
+                homePage.clickOnSshowLinkOptionsBtn();
                 break;
         }
     }
