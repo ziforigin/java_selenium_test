@@ -1,3 +1,8 @@
+//This class is for strategy pattern. We can implement some
+//config reader and then define browser in config. Here we
+//could add initFirefox() or other browser's setup methods;
+//For the purpose of current task it doesn't seem necessary.
+
 package utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;

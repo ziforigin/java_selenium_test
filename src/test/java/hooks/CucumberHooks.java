@@ -14,4 +14,6 @@ public class CucumberHooks {
     public void tearDown() {
         testContext.getWebDriverManager().quitWebDriver();
     }
+
+//    before test is handled by testng runner
 }
