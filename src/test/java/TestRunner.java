@@ -8,7 +8,9 @@ import org.testng.annotations.Test;
 
 
 @CucumberOptions(
-        strict = true
+        strict = true,
+        plugin = {
+                "com.github.kirlionik.cucumberallure.AllureReporter"}
 )
 
 public class TestRunner {
@@ -19,8 +21,7 @@ public class TestRunner {
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }
 
-
-    @Test(description = "Runs Cucumber Feature", dataProvider = "features")
+    @Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "features")
     public void feature(CucumberFeatureWrapper cucumberFeature) {
         testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
     }

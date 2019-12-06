@@ -1,16 +1,16 @@
 package pages;
 
-import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-public class HomePage extends AbstractPage{
+public class HomePage extends BasePage {
     WebDriver driver;
-    String webUrl = "https://qa-test.vagner.pro";
+    String webUrl = "https://qa-test.vagner.pro/";
     public String pageTitle = "qa-test";
 
     public HomePage(WebDriver driver) {
@@ -20,10 +20,10 @@ public class HomePage extends AbstractPage{
     }
 
     @FindBy(css = "#shorten")
-    public WebElement shortenBtn;
+    private WebElement shortenBtn;
 
     @FindBy(css = "#show-link-options")
-    public WebElement showLinkOptionsBtn;
+    private WebElement showLinkOptionsBtn;
 
     public void openPage(){
         driver.get(webUrl);
@@ -33,8 +33,11 @@ public class HomePage extends AbstractPage{
         shortenBtn.click();
     }
 
-    public void clickOnSshowLinkOptionsBtn() {
+    public void clickOnShowLinkOptionsBtn() {
         showLinkOptionsBtn.click();
     }
 
+    public void checkHomePageIsOpened() {
+        assertThat("The home page is not opened", driver.getCurrentUrl(), equalTo(webUrl));
+    }
 }
