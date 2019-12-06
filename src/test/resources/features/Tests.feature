@@ -34,7 +34,7 @@ Feature: Home page tests
     Examples:
       | Username                  | Password |
       | Pika Chu                  | Pika Pi  |
-      | Charmander                |          |
+      | Charmander                |  234444  |
 
 
 
