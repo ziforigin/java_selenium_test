@@ -17,8 +17,6 @@ Feature: Home page tests
   Scenario: Try to shorten a valid URL
     When I enter 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' URL into a text box
     And I click on 'shorten' button on home page
-    Then Shorten page is opened
-    And Shorten another button is shown
     Then I open the page using the shortened link and verify it's the same page 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
 
   @SeverityLevel.MAJOR
@@ -26,8 +24,6 @@ Feature: Home page tests
   Scenario: Try to shorten a valid URL and then try to shorten again
     When I enter 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' URL into a text box
     And I click on 'shorten' button on home page
-    Then Shorten page is opened
-    And Shorten another button is shown
     When I click on 'shorten another' button on shorten page
     Then Home page is opened
 

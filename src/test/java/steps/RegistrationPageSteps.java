@@ -17,7 +17,7 @@ public class RegistrationPageSteps {
 
     @Then("Registration page is opened")
     public void checkRegistrationPageIsOpened() {
-        registrationPage.checkRegistrationPageIsOpened();
+        registrationPage.checkRegistartionPageIsOpened();
     }
 
     @When("^I write '([^\"]*)' value to the '([^\"]*)' field$")

@@ -6,16 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-
-public class RegistrationPage {
+public class RegistrationPage extends BasePage{
 
     WebDriver driver;
     String webUrl = "https://qa-test.vagner.pro/signup";
     public String pageTitle = "qa-test";
 
     public RegistrationPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -31,10 +29,6 @@ public class RegistrationPage {
 
     @FindBy(css = ".btn.btn-default.btn-success")
     private WebElement submitBtn;
-
-    public void checkRegistrationPageIsOpened() {
-        assertThat("The registration page is not opened", driver.getCurrentUrl(), equalTo(webUrl));
-    }
 
     public void inputWrapperClickAndSend(WebElement webElement, String textToSend) {
         webElement.click();
@@ -60,5 +54,10 @@ public class RegistrationPage {
     public void clickSubmitBtn() {
         submitBtn.click();
     }
+
+    public void checkRegistartionPageIsOpened() {
+        waitAndCheckIfPageIsOpened(webUrl);
+    }
+
 }
 

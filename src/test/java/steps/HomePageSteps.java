@@ -1,11 +1,15 @@
 package steps;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import utils.TestContext;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class HomePageSteps {
     TestContext testContext;
@@ -36,8 +40,8 @@ public class HomePageSteps {
     @Then("I get warning message with '([^\"]*)' title and '([^\"]*)' text")
     public void receivedWarningMessageWithText(String title, String text) {
         homePage.warningMessageIsDisplayed();
-        homePage.warningMessageHasTitle(title);
-        homePage.warningMessageHasText(text);
+        assertThat("Warning message has wrong title", homePage.warningMessageHasTitle(), equalTo(title));
+        assertThat("Warning message has wrong text", homePage.warningMessageHasText(), equalTo(text));
     }
 
     @When("I enter '([^\"]*)' URL into a text box")
@@ -54,5 +58,18 @@ public class HomePageSteps {
     @When("I click on 'Sign Up' button in the navigation panel")
     public void clickSignUp() {
         homePage.clickOnSignUp();
+    }
+
+    @When("I click on 'shorten another' button on shorten page")
+    public void clickOnShortenAnotherButton() {
+        homePage.clickOnShortenAnotherButton();
+    }
+
+    @Then("I open the page using the shortened link and verify it's the same page '([^\"]*)'")
+    public void openShortenedLink(String fullPageUrl) {
+        String pageShortenedUrl = homePage.copyResultedShortenedUrl();
+        homePage.openPageByUrl(pageShortenedUrl);
+        String openedPageUrl = homePage.getCurrentUrl();
+        assertThat("Initial page is not opened", openedPageUrl, equalTo(fullPageUrl));
     }
 }
