@@ -2,6 +2,7 @@ package steps;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import pages.RegistratioFormFieldsEnum;
 import pages.RegistrationPage;
 import utils.TestContext;
 
@@ -19,8 +20,8 @@ public class RegistrationPageSteps {
         registrationPage.checkRegistrationPageIsOpened();
     }
 
-    @When("^I write '([^\"]*)' value to the '(Username|Password|Email)' field$")
-    public void iWriteComputerNameNewComputerPage(String inputText, String fieldName){
+    @When("^I write '([^\"]*)' value to the '([^\"]*)' field$")
+    public void iWriteComputerNameNewComputerPage(String inputText, RegistratioFormFieldsEnum fieldName){
         registrationPage.inputTextIntoField(inputText, fieldName);
     }
 

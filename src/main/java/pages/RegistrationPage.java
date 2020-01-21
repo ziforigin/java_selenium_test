@@ -35,20 +35,24 @@ public class RegistrationPage {
         assertThat("The registration page is not opened", driver.getCurrentUrl(), equalTo(webUrl));
     }
 
-    public void inputTextIntoField(String text, String field) {
+    public void inputWrapperClickAndSend(WebElement webElement, String textToSend) {
+        webElement.click();
+        webElement.sendKeys(textToSend);
+    }
+
+    public void inputTextIntoField(String text, RegistratioFormFieldsEnum field) {
         switch (field) {
-            case ("Username"):
-                loginInput.click();
-                loginInput.sendKeys(text);
+            case USERNAME:
+                inputWrapperClickAndSend(loginInput, text);
                 break;
-            case ("Password"):
-                passwordInput.click();
-                passwordInput.sendKeys(text);
+            case PASSWORD:
+                inputWrapperClickAndSend(passwordInput, text);
                 break;
-            case ("Email"):
-                emailInput.click();
-                emailInput.sendKeys(text);
+            case EMAIL:
+                inputWrapperClickAndSend(emailInput, text);
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + field);
         }
     }
 

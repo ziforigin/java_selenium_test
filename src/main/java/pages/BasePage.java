@@ -21,6 +21,8 @@ public class BasePage {
     @FindBy(css = ".toast")
     protected WebElement warningMessage;
 
+    //protected WebElement warningMessageTitle = warningMessage.findElement(By.cssSelector(".toast-title"));
+
     @FindBy(xpath = "//input[contains(@type, 'url')]")
     protected WebElement inputTextField;
 
@@ -36,8 +38,15 @@ public class BasePage {
     @FindBy(xpath = "//*[text()='Sign In']")
     private WebElement signInBtn;
 
+    public void openPageByUrl(String webUrl) {
+        driver.get(webUrl);
+    }
 
-    public void checkOpened(String pageTitle){
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+
+    public void checkOpened(String pageTitle) {
         assertThat("Expected page was not opened", driver.getTitle(), equalTo(pageTitle));
     }
 
@@ -46,6 +55,7 @@ public class BasePage {
     }
 
     public void warningMessageHasTitle(String title) {
+//        String displayedTitleText = warningMessageTitle.getText();
         WebElement displayedTitle = warningMessage.findElement(By.cssSelector(".toast-title"));
         String displayedTitleText = displayedTitle.getText();
         assertThat("Warning message has wrong title", displayedTitleText, equalTo(title));

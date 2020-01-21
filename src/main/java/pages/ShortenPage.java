@@ -19,6 +19,9 @@ public class ShortenPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(css = ".result-box")
+    private WebElement resultTextField;
+
     @FindBy(xpath = "//*[contains(text(),'Shorten another')][contains(@class, 'btn')]")
     private WebElement shortenAnotherBtn;
 
@@ -37,5 +40,7 @@ public class ShortenPage extends BasePage {
     public void clickOnShortenAnotherButton() {
         shortenAnotherBtn.click();
     }
+
+    public String copyResultedShortenedUrl() { return resultTextField.getAttribute("Value"); }
 
 }

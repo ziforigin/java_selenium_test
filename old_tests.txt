@@ -32,7 +32,7 @@ Feature: Home page tests
     Then Home page is opened
 
   @SeverityLevel.MAJOR
-    @TestCaseId("SignUp1")
+  @TestCaseId("SignUp1")
   Scenario Outline: I enter partial data into Register page
     When I click on 'Sign Up' button in the navigation panel
     Then Registration page is opened

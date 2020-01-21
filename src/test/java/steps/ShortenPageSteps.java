@@ -6,6 +6,9 @@ import cucumber.api.java.en.When;
 import pages.ShortenPage;
 import utils.TestContext;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class ShortenPageSteps {TestContext testContext;
     ShortenPage shortenPage;
 
@@ -27,6 +30,14 @@ public class ShortenPageSteps {TestContext testContext;
     @When("I click on 'shorten another' button on shorten page")
     public void clickOnShortenAnotherButton() {
         shortenPage.clickOnShortenAnotherButton();
+    }
+
+    @Then("I open the page using the shortened link and verify it's the same page '([^\"]*)'")
+    public void openShortenedLink(String fullPageUrl) {
+        String pageShortenedUrl = shortenPage.copyResultedShortenedUrl();
+        shortenPage.openPageByUrl(pageShortenedUrl);
+        String openedPageUrl = shortenPage.getCurrentUrl();
+        assertThat("Initial page is not opened", openedPageUrl, equalTo(fullPageUrl));
     }
 }
 
