@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import static io.github.bonigarcia.wdm.DriverManagerType.CHROME;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class WebDriverFactory {
 
@@ -28,6 +29,7 @@ public class WebDriverFactory {
     private WebDriver initChrome() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(5, SECONDS);
         return driver;
     }
 

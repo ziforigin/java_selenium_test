@@ -21,7 +21,8 @@ public class BasePage {
     @FindBy(css = ".toast")
     protected WebElement warningMessage;
 
-    //protected WebElement warningMessageTitle = warningMessage.findElement(By.cssSelector(".toast-title"));
+    static protected String warningMessageTitle = ".toast-title";
+    static protected String warningMessageText = ".toast-message";
 
     @FindBy(xpath = "//input[contains(@type, 'url')]")
     protected WebElement inputTextField;
@@ -46,23 +47,19 @@ public class BasePage {
         return driver.getCurrentUrl();
     }
 
-    public void checkOpened(String pageTitle) {
-        assertThat("Expected page was not opened", driver.getTitle(), equalTo(pageTitle));
-    }
-
     public void warningMessageIsDisplayed() {
         assertThat("Warning message is not displayed", warningMessage.isDisplayed(), equalTo(Boolean.TRUE));
     }
 
     public void warningMessageHasTitle(String title) {
 //        String displayedTitleText = warningMessageTitle.getText();
-        WebElement displayedTitle = warningMessage.findElement(By.cssSelector(".toast-title"));
+        WebElement displayedTitle = warningMessage.findElement(By.cssSelector(warningMessageTitle));
         String displayedTitleText = displayedTitle.getText();
         assertThat("Warning message has wrong title", displayedTitleText, equalTo(title));
     }
 
     public void warningMessageHasText(String text) {
-        WebElement displayedMessageTextElement = warningMessage.findElement(By.cssSelector(".toast-message"));
+        WebElement displayedMessageTextElement = warningMessage.findElement(By.cssSelector(warningMessageText));
         String displayedMessageText = displayedMessageTextElement.getText();
         assertThat("Warning message has wrong title", displayedMessageText, equalTo(text));
     }

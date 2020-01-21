@@ -19,7 +19,6 @@ public class HomePageSteps {
     @Given("I open the Home Page")
     public void openHomePage() {
         homePage.openPage();
-        homePage.checkOpened(homePage.pageTitle);
     }
 
     @When("I click on '([^\"]*)' button on home page")

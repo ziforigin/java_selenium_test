@@ -2,7 +2,7 @@ package steps;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import pages.RegistratioFormFieldsEnum;
+import auxiliary.RegistratioFormFieldsEnum;
 import pages.RegistrationPage;
 import utils.TestContext;
 
